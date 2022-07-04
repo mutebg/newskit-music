@@ -1,0 +1,86 @@
+{
+  "artist": {
+    "name": "Muse",
+    "bio": "Matt Bellamy // Dominic Howard // Chris Wolstenholm",
+    "cover": "https://lh3.googleusercontent.com/b-fuxu2ivK0vcI_5CTQDbsGkRngnqvQgx83WL0XY9nM-csvH2IvtgA48w6JGYbjoglp6GE3X6ocHcINe=w1440-h600-p-l90-rj"
+  },
+  "songs": [
+    {
+      "cover": "https://upload.wikimedia.org/wikipedia/en/8/8a/Theresistance.jpg",
+      "title": "Uprising",
+      "artist": "Muse",
+      "album": "The Resistance"
+    },
+    {
+      "cover": "https://upload.wikimedia.org/wikipedia/en/c/c5/BlackHolesCover.jpg",
+      "title": "Supermassive Black Hole",
+      "artist": "Muse",
+      "album": "Black Holes And Revelations"
+    },
+    {
+      "cover": "https://upload.wikimedia.org/wikipedia/en/c/c5/BlackHolesCover.jpg",
+      "title": "Starlight",
+      "artist": "Muse",
+      "album": "Black Holes And Revelations"
+    },
+    {
+      "cover": "https://upload.wikimedia.org/wikipedia/en/b/b4/Muse_-_Absolution_Cover_UK.jpg",
+      "title": "Hysteria",
+      "artist": "Muse",
+      "album": "Absolution"
+    },
+    {
+      "cover": "https://upload.wikimedia.org/wikipedia/en/3/35/Muse_2nd_law.jpg",
+      "title": "Madness",
+      "artist": "Muse",
+      "album": "The 2nd Law"
+    }
+  ],
+  "albums": [
+    {
+      "title": "Showbiz",
+      "year": "1999",
+      "cover": "https://upload.wikimedia.org/wikipedia/en/9/9d/Museshowbizalbumcover.jpg"
+    },
+    {
+      "title": "Origin of Symmetry",
+      "year": "2001",
+      "cover": "https://upload.wikimedia.org/wikipedia/en/3/35/Muse_-_Origin_of_Symmetry_cover_art.png"
+    },
+    {
+      "title": "Absolution",
+      "year": "2003",
+      "cover": "https://upload.wikimedia.org/wikipedia/en/b/b4/Muse_-_Absolution_Cover_UK.jpg"
+    },
+    {
+      "title": "Black Holes and Revelations",
+      "year": "2006",
+      "cover": "https://upload.wikimedia.org/wikipedia/en/c/c5/BlackHolesCover.jpg"
+    },
+    {
+      "title": "The Resistance",
+      "year": "2009",
+      "cover": "https://upload.wikimedia.org/wikipedia/en/8/8a/Theresistance.jpg"
+    },
+    {
+      "title": "The 2nd Law",
+      "year": "2012",
+      "cover": "https://upload.wikimedia.org/wikipedia/en/3/35/Muse_2nd_law.jpg"
+    },
+    {
+      "title": "Drones",
+      "year": "2015",
+      "cover": "https://upload.wikimedia.org/wikipedia/en/4/44/MuseDronesCover.jpg"
+    },
+    {
+      "title": "Simulation Theory",
+      "year": "2018",
+      "cover": "https://upload.wikimedia.org/wikipedia/en/e/e1/Simulation_Theory_%28album%29.jpg"
+    },
+    {
+      "title": "Will of the People",
+      "year": "2022",
+      "cover": "https://upload.wikimedia.org/wikipedia/en/1/12/Muse_-_Will_of_the_People.png"
+    }
+  ]
+}
