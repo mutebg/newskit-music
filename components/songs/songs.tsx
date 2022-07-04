@@ -36,7 +36,14 @@ const StyledGridLayout = styled(GridLayout)`
   }
 `;
 
-const Song = ({ title, artist, album, cover }) => {
+type SongProps = {
+  title: string,
+  artist: string,
+  album: string,
+  cover: string
+}
+
+const Song = ({ title, artist, album, cover }: SongProps) => {
   return (
     <StyledGridLayout
       key={title}
@@ -48,7 +55,9 @@ const Song = ({ title, artist, album, cover }) => {
       href="/1"
       areas="cover title artist album"
     >
-      {(Area) => {
+      {
+      // @ts-ignore
+      (Area) => {
         console.log(Area);
         return (
           <>
@@ -84,10 +93,14 @@ const Song = ({ title, artist, album, cover }) => {
   );
 };
 
-export const Songs = ({ songs }) => (
+type SongsProps = {
+  songs: SongProps[]
+}
+
+export const Songs = ({ songs }: SongsProps) => (
   <div>
     {songs.map((props) => (
-      <Song {...props} />
+      <Song key={props.title} {...props} />
     ))}
   </div>
 );

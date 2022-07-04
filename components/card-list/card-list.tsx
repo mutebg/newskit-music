@@ -9,11 +9,18 @@ const StyledCardGrid = styled(GridLayout)`
   text-decoration: none;
 `;
 
-const Card = ({ cover, title, sub }) => (
+type CardProps = {
+  title: string,
+  cover: string,
+  sub: string
+};
+
+const Card = ({ cover, title, sub }: CardProps) => (
   <StyledCardGrid
     overrides={{ width: "180px" }}
     rowGap="space030"
     as="a"
+    // @ts-ignore
     href="/album"
   >
     <Image
@@ -33,7 +40,11 @@ const Card = ({ cover, title, sub }) => (
   </StyledCardGrid>
 );
 
-export const CardList = ({ list }) => (
+type CardListProps =  {
+  list: CardProps[]
+}
+
+export const CardList = ({ list }: CardListProps) => (
   <StyledGridLayout columnGap="space050" justifyContent="start">
     {list.map((row) => (
       <Card key={row.title} {...row} />

@@ -33,7 +33,13 @@ const StyledGridLayout = styled(GridLayout)`
   } */
 `;
 
-export const Cover = ({ name, bio, cover }) => (
+type CoverProps = {
+  name: string,
+  bio: string,
+  cover: string
+}
+
+export const Cover = ({ name, bio, cover }: CoverProps) => (
   <div
     style={{
       ...coverStyles,

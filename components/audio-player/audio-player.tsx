@@ -19,7 +19,14 @@ const cardAreas = `img title
    img sub
   `;
 
-const AudioCard = ({ title, img, sub }) => (
+type AudioCardProps = {
+  title: string,
+  img: string,
+  sub: string
+};
+
+
+const AudioCard = ({ title, img, sub }: AudioCardProps) => (
   <GridLayout
     areas={cardAreas}
     columnGap="space030"
@@ -27,7 +34,9 @@ const AudioCard = ({ title, img, sub }) => (
     alignItems="center"
     justifyContent="center"
   >
-    {(Area) => (
+    {
+    // @ts-ignore
+    (Area) => (
       <>
         <Area.Img>
           <img src={img} width="40" height="40" />
@@ -66,11 +75,14 @@ export const AudioPlayer = () => (
         alignItems="center"
         paddingBlockEnd="space030"
       >
-        {(Area) => (
+        {
+        // @ts-ignore
+        (Area) => (
           <>
             <Area.Seek>
               <AudioPlayerSeekBar />
             </Area.Seek>
+            {/* @ts-ignore */}
             <Area.Back overrides={{ paddingInlineStart: "space040" }}>
               <AudioPlayerSkipPreviousButton size="small" />
             </Area.Back>
@@ -90,6 +102,7 @@ export const AudioPlayer = () => (
                 sub="Muse - Single"
               />
             </Area.Card>
+            {/* @ts-ignore */}
             <Area.Volume overrides={{ paddingInlineEnd: "space040" }}>
               volume
             </Area.Volume>

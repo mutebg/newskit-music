@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           }
         `}
       />
+      {/* @ts-ignore */}
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
       </ThemeProvider>

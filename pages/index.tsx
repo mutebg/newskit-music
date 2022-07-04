@@ -8,7 +8,12 @@ import { Songs } from "../components/songs/songs";
 import { CardList } from "../components/card-list/card-list";
 import data from "./data.json";
 
-const Section = ({ title, children }) => (
+type SectionProps = {
+  title: string,
+  children: React.ReactNode
+}
+
+const Section = ({ title, children }: SectionProps) => (
   <GridLayout
     rowGap="space040"
     style={{ margin: "0 auto" }}
