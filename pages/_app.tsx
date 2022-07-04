@@ -1,6 +1,7 @@
 import { ThemeProvider, Global, css } from "newskit";
 import type { AppProps } from "next/app";
 import theme from "../theme";
+import { CSSVars } from "../components/css-vars/css-vars";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -20,7 +21,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       />
       {/* @ts-ignore */}
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <CSSVars>
+          <Component {...pageProps} />
+        </CSSVars>
       </ThemeProvider>
     </>
   );
