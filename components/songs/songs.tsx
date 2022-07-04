@@ -20,6 +20,7 @@ const StyledGridLayout = styled(GridLayout)`
   ${getStylePresetFromTheme("songListItem")}
 
   .play-btn {
+    transition: 0.1s linear;
     z-index: 2;
     height: 100%;
     width: 100%;
@@ -27,12 +28,12 @@ const StyledGridLayout = styled(GridLayout)`
     justify-content: center;
     align-items: center;
     opacity: 0;
+    ${getOverlayCssFromTheme("background", "overlayTintBase010")}
   }
 
   &:focus .play-btn,
   &:hover .play-btn {
     opacity: 1;
-    ${getOverlayCssFromTheme("background", "overlayTintBase010")}
   }
 `;
 

@@ -1,4 +1,4 @@
-import { GridLayout, styled, TextBlock, Block, Image } from "newskit";
+import { GridLayout, styled, TextBlock, Block, IconButton, Image, IconFilledPlayArrow, getOverlayCssFromTheme, getSpacingCssFromTheme } from "newskit";
 
 const StyledGridLayout = styled(GridLayout)`
   grid-auto-flow: column;
@@ -7,6 +7,23 @@ const StyledGridLayout = styled(GridLayout)`
 const StyledCardGrid = styled(GridLayout)`
   color: unset;
   text-decoration: none;
+  outline: none;
+
+  .play-btn {
+    transition: 0.1s linear;
+    z-index: 2;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    opacity: 0;
+    ${getOverlayCssFromTheme("background", "overlayGradientBaseVertical")}
+    ${getSpacingCssFromTheme('padding', 'space030')};
+  }
+
+  &:focus .play-btn,
+  &:hover .play-btn {
+    opacity: 1;
+  }
 `;
 
 type CardProps = {
@@ -20,23 +37,42 @@ const Card = ({ cover, title, sub }: CardProps) => (
     overrides={{ width: "180px" }}
     rowGap="space030"
     as="a"
+    areas={`
+        cover
+        content
+    `}
     // @ts-ignore
     href="/album"
   >
-    <Image
-      loadingAspectRatio="1:1"
-      src={cover}
-      overrides={{ width: "100%", stylePreset: "imageRoundedSmall" }}
-    />
-    <Block>
-      <TextBlock
-        typographyPreset="utilityHeading010"
-        paddingBlockEnd="space020"
-      >
-        {title}
-      </TextBlock>
-      <TextBlock typographyPreset="utilitySubheading010">{sub}</TextBlock>
-    </Block>
+    {
+      // @ts-ignore
+      (Area) => (<>
+        <Area.Cover>
+          <Image
+            alt=""
+            loadingAspectRatio="1:1"
+            src={cover}
+            overrides={{ width: "100%", stylePreset: "imageRoundedSmall" }}
+          />
+        </Area.Cover>
+        <Area.Cover alignSelf="stretch" className="play-btn">
+          <IconButton as="span" size="medium">
+            <IconFilledPlayArrow
+              overrides={{ size: "iconSize030", stylePreset: "ink" }}
+            />
+          </IconButton>
+        </Area.Cover>
+        <Area.Content>
+          <TextBlock
+            typographyPreset="utilityHeading010"
+            paddingBlockEnd="space020"
+          >
+            {title}
+          </TextBlock>
+          <TextBlock typographyPreset="utilitySubheading010">{sub}</TextBlock>
+        </Area.Content>
+      </>)
+    }
   </StyledCardGrid>
 );
 
