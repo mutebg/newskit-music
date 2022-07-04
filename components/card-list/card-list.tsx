@@ -56,6 +56,7 @@ const Card = ({ cover, title, sub }: CardProps) => (
           />
         </Area.Cover>
         <Area.Cover alignSelf="stretch" className="play-btn">
+          {/* @ts-ignore */}
           <IconButton as="span" size="medium">
             <IconFilledPlayArrow
               overrides={{ size: "iconSize030", stylePreset: "ink" }}
