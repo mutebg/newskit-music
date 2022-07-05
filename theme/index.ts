@@ -13,6 +13,11 @@ const theme = createTheme({
     spacePresets: {
       spaceInsetMediumButton: "{{sizing.sizing000}} {{sizing.sizing040}}",
     },
+    colors: {
+      illustrationBackground020: "#9B87FC",
+      illustrationPalette050: "#5E44E4",
+      illustrationInterface100: "#332770",
+    },
   },
 });
 

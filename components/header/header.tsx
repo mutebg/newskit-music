@@ -23,7 +23,12 @@ export const Header = () => (
       columns="auto auto auto"
       justifyContent="space-between"
     >
-      <p>NewskitMusic</p>
+      <GridLayout columns="auto auto" alignItems="center">
+        <svg style={{ height: "48px", width: "auto" }} viewBox="0 0 1345 760">
+          <use xlinkHref="/svgs/colors.svg#colors"></use>
+        </svg>
+        <span>NewsKit Demo</span>
+      </GridLayout>
       <Menu>
         <MenuItem href="/">Home</MenuItem>
         <MenuItem href="/">Explore</MenuItem>
