@@ -1,15 +1,10 @@
 import * as React from "react";
 import {
-  Menu,
-  MenuItem,
   GridLayout,
   TextBlock,
-  Block,
-  IconFilledSearch,
   IconFilledRadio,
   IconFilledShuffle,
   Button,
-  GridLayoutItem,
   styled,
 } from "newskit";
 
@@ -19,25 +14,13 @@ const coverStyles = {
 
 const StyledGridLayout = styled(GridLayout)`
   margin: 0 auto;
-  /* position: relative;
-  &:after {
-    background-image: linear-gradient(45deg, darken(#13abdb, 5%), #b10dc9);
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    opacity: 0.55;
-  } */
 `;
 
 type CoverProps = {
-  name: string,
-  bio: string,
-  cover: string
-}
+  name: string;
+  bio: string;
+  cover: string;
+};
 
 export const Cover = ({ name, bio, cover }: CoverProps) => (
   <div

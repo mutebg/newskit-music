@@ -38,11 +38,11 @@ const StyledGridLayout = styled(GridLayout)`
 `;
 
 type SongProps = {
-  title: string,
-  artist: string,
-  album: string,
-  cover: string
-}
+  title: string;
+  artist: string;
+  album: string;
+  cover: string;
+};
 
 const Song = ({ title, artist, album, cover }: SongProps) => {
   return (
@@ -57,46 +57,53 @@ const Song = ({ title, artist, album, cover }: SongProps) => {
       areas="cover title artist album"
     >
       {
-      // @ts-ignore
-      (Area) => {
-        console.log(Area);
-        return (
-          <>
-            <Area.Cover>
-              <Image
-                src={cover}
-                overrides={{
-                  width: "32px",
-                  height: "32px",
-                  stylePreset: "imageRoundedSmall",
-                }}
-                alt=""
-              />
-            </Area.Cover>
-            <Area.Cover alignSelf="stretch" className="play-btn">
-              <IconFilledPlayArrow
-                overrides={{ size: "iconSize010", stylePreset: "inkInverse" }}
-              />
-            </Area.Cover>
-            <Area.Title>
-              <TextBlock typographyPreset="utilityLabel020">{title}</TextBlock>
-            </Area.Title>
-            <Area.Artist>
-              <TextBlock typographyPreset="utilityLabel020">{artist}</TextBlock>
-            </Area.Artist>
-            <Area.Album>
-              <TextBlock typographyPreset="utilityLabel020">{album}</TextBlock>
-            </Area.Album>
-          </>
-        );
-      }}
+        // @ts-ignore
+        (Area) => {
+          console.log(Area);
+          return (
+            <>
+              <Area.Cover>
+                <Image
+                  src={cover}
+                  overrides={{
+                    width: "32px",
+                    height: "32px",
+                    stylePreset: "imageRoundedSmall",
+                  }}
+                  alt=""
+                />
+              </Area.Cover>
+              <Area.Cover alignSelf="stretch" className="play-btn">
+                <IconFilledPlayArrow
+                  overrides={{ size: "iconSize010", stylePreset: "inkInverse" }}
+                />
+              </Area.Cover>
+              <Area.Title>
+                <TextBlock typographyPreset="utilityLabel020">
+                  {title}
+                </TextBlock>
+              </Area.Title>
+              <Area.Artist>
+                <TextBlock typographyPreset="utilityLabel020">
+                  {artist}
+                </TextBlock>
+              </Area.Artist>
+              <Area.Album>
+                <TextBlock typographyPreset="utilityLabel020">
+                  {album}
+                </TextBlock>
+              </Area.Album>
+            </>
+          );
+        }
+      }
     </StyledGridLayout>
   );
 };
 
 type SongsProps = {
-  songs: SongProps[]
-}
+  songs: SongProps[];
+};
 
 export const Songs = ({ songs }: SongsProps) => (
   <div>

@@ -3,7 +3,6 @@ import {
   Menu,
   MenuItem,
   GridLayout,
-  TextBlock,
   Block,
   IconFilledSearch,
   styled,
