@@ -46,7 +46,6 @@ const SongListItem = ({ title, artist, album, cover }: SongListItemProps) => {
       {
         // @ts-ignore
         (Area) => {
-          console.log(Area);
           return (
             <>
               <Area.Cover>
