@@ -4,19 +4,13 @@ import {
   TextBlock,
   Image,
   IconFilledPlayArrow,
-  IconButton,
-  getColorCssFromTheme,
   getOverlayCssFromTheme,
   getStylePresetFromTheme,
 } from "newskit";
-import { useState } from "react";
+import { SongItemProps as SongListItemProps, SongsProps } from "./types";
 
 // This can be in style-preset
 const StyledGridLayout = styled(GridLayout)`
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  color: unset;
-  text-decoration: none;
-  outline: none;
   ${getStylePresetFromTheme("songListItem")}
 
   .play-btn {
@@ -37,14 +31,7 @@ const StyledGridLayout = styled(GridLayout)`
   }
 `;
 
-type SongProps = {
-  title: string;
-  artist: string;
-  album: string;
-  cover: string;
-};
-
-const Song = ({ title, artist, album, cover }: SongProps) => {
+const SongListItem = ({ title, artist, album, cover }: SongListItemProps) => {
   return (
     <StyledGridLayout
       key={title}
@@ -101,14 +88,10 @@ const Song = ({ title, artist, album, cover }: SongProps) => {
   );
 };
 
-type SongsProps = {
-  songs: SongProps[];
-};
-
 export const Songs = ({ songs }: SongsProps) => (
   <div>
     {songs.map((props) => (
-      <Song key={props.title} {...props} />
+      <SongListItem key={props.title} {...props} />
     ))}
   </div>
 );

@@ -11,6 +11,7 @@ import {
   Block,
   styled,
 } from "newskit";
+import { AudioPlayerCardProps } from "./types";
 
 const AUDIO_SRC =
   "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
@@ -19,14 +20,7 @@ const cardAreas = `img title
    img sub
   `;
 
-type AudioCardProps = {
-  title: string,
-  img: string,
-  sub: string
-};
-
-
-const AudioCard = ({ title, img, sub }: AudioCardProps) => (
+const AudioCard = ({ title, img, sub }: AudioPlayerCardProps) => (
   <GridLayout
     areas={cardAreas}
     columnGap="space030"
@@ -35,20 +29,21 @@ const AudioCard = ({ title, img, sub }: AudioCardProps) => (
     justifyContent="center"
   >
     {
-    // @ts-ignore
-    (Area) => (
-      <>
-        <Area.Img>
-          <img src={img} width="40" height="40" />
-        </Area.Img>
-        <Area.Title>
-          <TextBlock typographyPreset="utilityHeading010">{title}</TextBlock>
-        </Area.Title>
-        <Area.Sub>
-          <TextBlock typographyPreset="utilitySubheading010">{sub}</TextBlock>
-        </Area.Sub>
-      </>
-    )}
+      // @ts-ignore
+      (Area) => (
+        <>
+          <Area.Img>
+            <img src={img} width="40" height="40" />
+          </Area.Img>
+          <Area.Title>
+            <TextBlock typographyPreset="utilityHeading010">{title}</TextBlock>
+          </Area.Title>
+          <Area.Sub>
+            <TextBlock typographyPreset="utilitySubheading010">{sub}</TextBlock>
+          </Area.Sub>
+        </>
+      )
+    }
   </GridLayout>
 );
 
@@ -64,7 +59,7 @@ const StyledBlock = styled(Block)`
   right: 0;
 `;
 
-export const AudioPlayer = () => (
+export const AudioPlayer = (props: AudioPlayerProps) => (
   <StyledBlock stylePreset="audioPlayerBar">
     <AudioPlayerComposable src={AUDIO_SRC}>
       <GridLayout
@@ -76,38 +71,39 @@ export const AudioPlayer = () => (
         paddingBlockEnd="space030"
       >
         {
-        // @ts-ignore
-        (Area) => (
-          <>
-            <Area.Seek>
-              <AudioPlayerSeekBar />
-            </Area.Seek>
-            {/* @ts-ignore */}
-            <Area.Back overrides={{ paddingInlineStart: "space040" }}>
-              <AudioPlayerSkipPreviousButton size="small" />
-            </Area.Back>
-            <Area.Play>
-              <AudioPlayerPlayPauseButton size="medium" />
-            </Area.Play>
-            <Area.Forward>
-              <AudioPlayerSkipNextButton size="small" />
-            </Area.Forward>
-            <Area.Time>
-              <AudioPlayerTimeDisplay />
-            </Area.Time>
-            <Area.Card>
-              <AudioCard
-                img="https://lh3.googleusercontent.com/MREZs3XEFT10UiamzjOG9eRgOFvyzvNiLQmiNzrRXHeQlnaTbRRZedz6PQuowK0yJWxjGy_6lGEiT7o=w544-h544-l90-rj"
-                title="Will Of The People"
-                sub="Muse - Single"
-              />
-            </Area.Card>
-            {/* @ts-ignore */}
-            <Area.Volume overrides={{ paddingInlineEnd: "space040" }}>
-              volume
-            </Area.Volume>
-          </>
-        )}
+          // @ts-ignore
+          (Area) => (
+            <>
+              <Area.Seek>
+                <AudioPlayerSeekBar />
+              </Area.Seek>
+              {/* @ts-ignore */}
+              <Area.Back overrides={{ paddingInlineStart: "space040" }}>
+                <AudioPlayerSkipPreviousButton size="small" />
+              </Area.Back>
+              <Area.Play>
+                <AudioPlayerPlayPauseButton size="medium" />
+              </Area.Play>
+              <Area.Forward>
+                <AudioPlayerSkipNextButton size="small" />
+              </Area.Forward>
+              <Area.Time>
+                <AudioPlayerTimeDisplay />
+              </Area.Time>
+              <Area.Card>
+                <AudioCard
+                  img="https://lh3.googleusercontent.com/MREZs3XEFT10UiamzjOG9eRgOFvyzvNiLQmiNzrRXHeQlnaTbRRZedz6PQuowK0yJWxjGy_6lGEiT7o=w544-h544-l90-rj"
+                  title="Will Of The People"
+                  sub="Muse - Single"
+                />
+              </Area.Card>
+              {/* @ts-ignore */}
+              <Area.Volume overrides={{ paddingInlineEnd: "space040" }}>
+                volume
+              </Area.Volume>
+            </>
+          )
+        }
       </GridLayout>
     </AudioPlayerComposable>
   </StyledBlock>

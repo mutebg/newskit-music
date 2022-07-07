@@ -7,6 +7,7 @@ import {
   Button,
   styled,
 } from "newskit";
+import { CoverProps } from "./types";
 
 const coverStyles = {
   backgroundSize: "cover",
@@ -15,12 +16,6 @@ const coverStyles = {
 const StyledGridLayout = styled(GridLayout)`
   margin: 0 auto;
 `;
-
-type CoverProps = {
-  name: string;
-  bio: string;
-  cover: string;
-};
 
 export const Cover = ({ name, bio, cover }: CoverProps) => (
   <div

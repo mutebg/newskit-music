@@ -1,4 +1,15 @@
-import { GridLayout, styled, TextBlock, Block, IconButton, Image, IconFilledPlayArrow, getOverlayCssFromTheme, getSpacingCssFromTheme } from "newskit";
+import {
+  GridLayout,
+  styled,
+  TextBlock,
+  Block,
+  IconButton,
+  Image,
+  IconFilledPlayArrow,
+  getOverlayCssFromTheme,
+  getSpacingCssFromTheme,
+} from "newskit";
+import { CardListItemProps, CardListProps } from "./types";
 
 const StyledGridLayout = styled(GridLayout)`
   grid-auto-flow: column;
@@ -17,7 +28,7 @@ const StyledCardGrid = styled(GridLayout)`
     align-content: center;
     opacity: 0;
     ${getOverlayCssFromTheme("background", "overlayGradientBaseVertical")}
-    ${getSpacingCssFromTheme('padding', 'space030')};
+    ${getSpacingCssFromTheme("padding", "space030")};
   }
 
   &:focus .play-btn,
@@ -26,13 +37,7 @@ const StyledCardGrid = styled(GridLayout)`
   }
 `;
 
-type CardProps = {
-  title: string,
-  cover: string,
-  sub: string
-};
-
-const Card = ({ cover, title, sub }: CardProps) => (
+const CardListItem = ({ cover, title, sub }: CardListItemProps) => (
   <StyledCardGrid
     overrides={{ width: "180px" }}
     rowGap="space030"
@@ -46,45 +51,43 @@ const Card = ({ cover, title, sub }: CardProps) => (
   >
     {
       // @ts-ignore
-      (Area) => (<>
-        <Area.Cover>
-          <Image
-            alt=""
-            loadingAspectRatio="1:1"
-            src={cover}
-            overrides={{ width: "100%", stylePreset: "imageRoundedSmall" }}
-          />
-        </Area.Cover>
-        <Area.Cover alignSelf="stretch" className="play-btn">
-          {/* @ts-ignore */}
-          <IconButton as="span" size="medium">
-            <IconFilledPlayArrow
-              overrides={{ size: "iconSize030", stylePreset: "ink" }}
+      (Area) => (
+        <>
+          <Area.Cover>
+            <Image
+              alt=""
+              loadingAspectRatio="1:1"
+              src={cover}
+              overrides={{ width: "100%", stylePreset: "imageRoundedSmall" }}
             />
-          </IconButton>
-        </Area.Cover>
-        <Area.Content>
-          <TextBlock
-            typographyPreset="utilityHeading010"
-            paddingBlockEnd="space020"
-          >
-            {title}
-          </TextBlock>
-          <TextBlock typographyPreset="utilitySubheading010">{sub}</TextBlock>
-        </Area.Content>
-      </>)
+          </Area.Cover>
+          <Area.Cover alignSelf="stretch" className="play-btn">
+            {/* @ts-ignore */}
+            <IconButton as="span" size="medium">
+              <IconFilledPlayArrow
+                overrides={{ size: "iconSize030", stylePreset: "ink" }}
+              />
+            </IconButton>
+          </Area.Cover>
+          <Area.Content>
+            <TextBlock
+              typographyPreset="utilityHeading010"
+              paddingBlockEnd="space020"
+            >
+              {title}
+            </TextBlock>
+            <TextBlock typographyPreset="utilitySubheading010">{sub}</TextBlock>
+          </Area.Content>
+        </>
+      )
     }
   </StyledCardGrid>
 );
 
-type CardListProps =  {
-  list: CardProps[]
-}
-
 export const CardList = ({ list }: CardListProps) => (
   <StyledGridLayout columnGap="space050" justifyContent="start">
     {list.map((row) => (
-      <Card key={row.title} {...row} />
+      <CardListItem key={row.title} {...row} />
     ))}
   </StyledGridLayout>
 );

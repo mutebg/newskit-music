@@ -1,9 +1,5 @@
 import { GridLayout, Scroll, TextBlock } from "newskit";
-
-type SectionProps = {
-  title: string;
-  children: React.ReactNode;
-};
+import { SectionProps } from "./types";
 
 export const Section = ({ title, children }: SectionProps) => (
   <GridLayout

@@ -22,6 +22,14 @@ export default {
     },
   },
   songListItem: {
+    base: {
+      color: "unset",
+      outline: "none",
+      borderWidth: "0 0 1px 0",
+      borderColor: "rgba(0, 0, 0, 0.1)",
+      borderStyle: "solid",
+      textDecoration: "none",
+    },
     focus: {
       backgroundColor: "{{colors.interface030}}",
     },
