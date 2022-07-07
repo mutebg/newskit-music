@@ -73,10 +73,16 @@ const CardListItem = ({ cover, title, sub }: CardListItemProps) => (
             <TextBlock
               typographyPreset="utilityHeading010"
               paddingBlockEnd="space020"
+              stylePreset="inkBase"
             >
               {title}
             </TextBlock>
-            <TextBlock typographyPreset="utilitySubheading010">{sub}</TextBlock>
+            <TextBlock
+              typographyPreset="utilitySubheading010"
+              stylePreset="inkBase"
+            >
+              {sub}
+            </TextBlock>
           </Area.Content>
         </>
       )

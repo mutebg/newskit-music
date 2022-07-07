@@ -14,6 +14,7 @@ export default {
   },
   audioPlayerTimeDisplay: {
     typographyPreset: "utilityButton020",
+    stylePreset: "inkBase",
   },
   menu: {
     spaceInline: "space050",

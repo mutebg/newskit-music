@@ -66,17 +66,26 @@ const SongListItem = ({ title, artist, album, cover }: SongListItemProps) => {
                 />
               </Area.Cover>
               <Area.Title>
-                <TextBlock typographyPreset="utilityLabel020">
+                <TextBlock
+                  typographyPreset="utilityLabel020"
+                  stylePreset="inkBase"
+                >
                   {title}
                 </TextBlock>
               </Area.Title>
               <Area.Artist>
-                <TextBlock typographyPreset="utilityLabel020">
+                <TextBlock
+                  typographyPreset="utilityLabel020"
+                  stylePreset="inkBase"
+                >
                   {artist}
                 </TextBlock>
               </Area.Artist>
               <Area.Album>
-                <TextBlock typographyPreset="utilityLabel020">
+                <TextBlock
+                  typographyPreset="utilityLabel020"
+                  stylePreset="inkBase"
+                >
                   {album}
                 </TextBlock>
               </Area.Album>

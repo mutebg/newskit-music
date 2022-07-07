@@ -8,7 +8,7 @@ import data from "./data.json";
 
 const Home: NextPage = () => {
   return (
-    <GridLayout rowGap="space080">
+    <GridLayout rowGap="space100">
       <Cover {...data.artist} />
       <Section title="Songs">
         <Songs songs={data.songs} />

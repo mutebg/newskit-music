@@ -6,12 +6,13 @@ import {
   AudioPlayerTimeDisplay,
   AudioPlayerSkipNextButton,
   AudioPlayerSkipPreviousButton,
+  AudioPlayerVolumeControl,
   GridLayout,
   TextBlock,
   Block,
   styled,
 } from "newskit";
-import { AudioPlayerCardProps } from "./types";
+import { AudioPlayerCardProps, AudioPlayerProps } from "./types";
 
 const AUDIO_SRC =
   "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
@@ -36,10 +37,20 @@ const AudioCard = ({ title, img, sub }: AudioPlayerCardProps) => (
             <img src={img} width="40" height="40" />
           </Area.Img>
           <Area.Title>
-            <TextBlock typographyPreset="utilityHeading010">{title}</TextBlock>
+            <TextBlock
+              stylePreset="inkBase"
+              typographyPreset="utilityHeading010"
+            >
+              {title}
+            </TextBlock>
           </Area.Title>
           <Area.Sub>
-            <TextBlock typographyPreset="utilitySubheading010">{sub}</TextBlock>
+            <TextBlock
+              stylePreset="inkBase"
+              typographyPreset="utilitySubheading010"
+            >
+              {sub}
+            </TextBlock>
           </Area.Sub>
         </>
       )
@@ -57,6 +68,7 @@ const StyledBlock = styled(Block)`
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 2;
 `;
 
 export const AudioPlayer = (props: AudioPlayerProps) => (
@@ -99,7 +111,7 @@ export const AudioPlayer = (props: AudioPlayerProps) => (
               </Area.Card>
               {/* @ts-ignore */}
               <Area.Volume overrides={{ paddingInlineEnd: "space040" }}>
-                volume
+                <AudioPlayerVolumeControl />
               </Area.Volume>
             </>
           )

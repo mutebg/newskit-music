@@ -11,7 +11,9 @@ export const Section = ({ title, children }: SectionProps) => (
       width: "100%",
     }}
   >
-    <TextBlock typographyPreset="editorialHeadline070">{title}</TextBlock>
+    <TextBlock typographyPreset="editorialHeadline070" stylePreset="inkBase">
+      {title}
+    </TextBlock>
 
     <GridLayout>
       <Scroll controls="hover" stepDistance={320}>
