@@ -12,6 +12,8 @@ import {
   getColorCssFromTheme,
   Switch,
   TextBlock,
+  IconFilledDarkMode,
+  IconFilledLightMode,
 } from "newskit";
 import { HeaderProps } from "./types";
 
@@ -23,6 +25,9 @@ const StyledBlock = styled(Block)`
   z-index: 2;
   ${getColorCssFromTheme("background", "interface020")}
 `;
+
+const DynamicThumbIcon = ({ checked }: { checked: boolean }) =>
+  !checked ? <IconFilledDarkMode /> : <IconFilledLightMode />;
 
 export const Header = ({ themeName, themeOnChange }: HeaderProps) => {
   return (
@@ -58,6 +63,10 @@ export const Header = ({ themeName, themeOnChange }: HeaderProps) => {
               label="Toggle theme"
               onChange={themeOnChange}
               checked={themeName === "light"}
+              overrides={{
+                // @ts-ignore
+                thumbIcon: DynamicThumbIcon,
+              }}
             />
             <IconButton>
               <IconFilledAccountCircle overrides={{ size: "iconSize030" }} />
