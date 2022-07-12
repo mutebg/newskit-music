@@ -32,8 +32,8 @@ export const Cover = ({ name, bio, cover }: CoverProps) => (
       rowGap="space040"
       alignContent="end"
       overrides={{
-        height: "60vh",
-        paddingInline: "space080",
+        height: { xs: "40vh", md: "60vh" },
+        paddingInline: { xs: "space050", md: "space080" },
         maxWidth: "1480px",
       }}
     >

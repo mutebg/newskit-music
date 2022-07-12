@@ -14,6 +14,7 @@ import {
   TextBlock,
   IconFilledDarkMode,
   IconFilledLightMode,
+  Hidden,
 } from "newskit";
 import { HeaderProps } from "./types";
 
@@ -49,6 +50,7 @@ export const Header = ({ themeName, themeOnChange }: HeaderProps) => {
             NewsKit Demo
           </TextBlock>
         </GridLayout>
+
         <Menu>
           <MenuItem href="/">Home</MenuItem>
           <MenuItem href="/">Explore</MenuItem>
@@ -57,6 +59,7 @@ export const Header = ({ themeName, themeOnChange }: HeaderProps) => {
             <IconFilledSearch /> Search
           </MenuItem>
         </Menu>
+
         <GridLayoutItem justifySelf="end">
           <GridLayout columns="auto auto" columnGap="space080">
             <Switch

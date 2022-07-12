@@ -6,7 +6,7 @@ export const Section = ({ title, children }: SectionProps) => (
     rowGap="space040"
     style={{ margin: "0 auto" }}
     overrides={{
-      paddingInline: "space080",
+      paddingInline: { xs: "space050", md: "space080" },
       maxWidth: "1480px",
       width: "100%",
     }}

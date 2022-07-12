@@ -31,17 +31,30 @@ const StyledGridLayout = styled(GridLayout)`
   }
 `;
 
+const songAreas = {
+  xs: `
+    cover title title
+    cover artist album`,
+  md: "cover title artist album",
+};
+
+const songColumns = {
+  xs: "32px max-content max-content",
+  md: "32px 1fr 1fr 1fr",
+};
+
 const SongListItem = ({ title, artist, album, cover }: SongListItemProps) => {
   return (
     <StyledGridLayout
       key={title}
-      columns="32px 1fr 1fr 1fr"
+      columns={songColumns}
       columnGap="space040"
-      overrides={{ paddingBlock: "space010" }}
+      rowGap="space020"
+      overrides={{ paddingBlock: { xs: "space030", md: "space010" } }}
       alignItems="center"
       as="a"
       href="/1"
-      areas="cover title artist album"
+      areas={songAreas}
     >
       {
         // @ts-ignore
@@ -69,7 +82,7 @@ const SongListItem = ({ title, artist, album, cover }: SongListItemProps) => {
                   typographyPreset="utilityLabel020"
                   stylePreset="inkBase"
                 >
-                  {title}
+                  <strong>{title}</strong>
                 </TextBlock>
               </Area.Title>
               <Area.Artist>
