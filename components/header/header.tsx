@@ -17,6 +17,7 @@ import {
   Hidden,
   Popover,
   MenuDivider,
+  Button,
 } from "newskit";
 import Link from "next/link";
 
@@ -75,7 +76,7 @@ export const Header = ({ themeName, themeOnChange }: HeaderProps) => {
 
         <GridLayoutItem justifySelf="end">
           <GridLayout columns="auto auto" columnGap="space080">
-            <Switch
+            {/* <Switch
               label="Toggle theme"
               onChange={themeOnChange}
               checked={themeName === "light"}
@@ -83,7 +84,7 @@ export const Header = ({ themeName, themeOnChange }: HeaderProps) => {
                 // @ts-ignore
                 thumbIcon: DynamicThumbIcon,
               }}
-            />
+            /> */}
             <div>
               <Popover
                 content={userMenu}
@@ -102,6 +103,20 @@ export const Header = ({ themeName, themeOnChange }: HeaderProps) => {
                     overrides={{ size: "iconSize030" }}
                   />
                 </IconButton>
+              </Popover>
+              <Popover
+                content={userMenu}
+                closePosition="none"
+                header={undefined}
+                enableDismiss
+                overrides={{
+                  content: {
+                    paddingInline: "space000",
+                    paddingBlock: "space000",
+                  },
+                }}
+              >
+                <Button>text</Button>
               </Popover>
             </div>
           </GridLayout>
