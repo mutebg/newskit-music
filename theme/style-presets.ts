@@ -41,5 +41,8 @@ export default {
     base: {
       whiteSpace: "nowrap",
     },
+    selected: {
+      backgroundColor: "{{colors.interactivePrimary010}}",
+    },
   },
 } as Record<string, StylePreset>;

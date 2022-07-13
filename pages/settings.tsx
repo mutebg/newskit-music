@@ -17,6 +17,7 @@ import {
   FormInputLabel,
   SelectOptionProps,
 } from "newskit";
+import { PageTemplate } from "../components/page-template";
 
 const FormGrid = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -161,22 +162,7 @@ const tabs = [
 
 const Settings: NextPage = () => {
   return (
-    <GridLayout
-      rowGap="space050"
-      overrides={{
-        // marginInline: "auto",
-        // maxWidth: "1200px",
-        marginBlockStart: "space070",
-        paddingInline: "space040",
-      }}
-    >
-      <TextBlock
-        typographyPreset="utilityHeading050"
-        paddingInlineStart="space040"
-        stylePreset="inkBase"
-      >
-        Settings
-      </TextBlock>
+    <PageTemplate title="Settings">
       <Tabs
         distribution="start"
         overrides={{
@@ -193,7 +179,7 @@ const Settings: NextPage = () => {
           </Tab>
         ))}
       </Tabs>
-    </GridLayout>
+    </PageTemplate>
   );
 };
 
