@@ -38,6 +38,7 @@ const AudioCard = ({ title, img, sub }: AudioPlayerCardProps) => (
             <img src={img} width="40" height="40" />
           </Area.Img>
           <Area.Title>
+            {/* @ts-ignore */}
             <Hidden xs sm>
               <TextBlock
                 stylePreset="inkBase"
@@ -48,6 +49,7 @@ const AudioCard = ({ title, img, sub }: AudioPlayerCardProps) => (
             </Hidden>
           </Area.Title>
           <Area.Sub>
+            {/* @ts-ignore */}
             <Hidden xs sm>
               <TextBlock
                 stylePreset="inkBase"
@@ -106,8 +108,8 @@ export const AudioPlayer = (props: AudioPlayerProps) => (
               <Area.Seek>
                 <AudioPlayerSeekBar />
               </Area.Seek>
-              {/* @ts-ignore */}
-              <Area.Back overrides={{ paddingInlineStart: "space040" }}>
+
+              <Area.Back paddingInlineStart="space040">
                 <AudioPlayerSkipPreviousButton size="small" />
               </Area.Back>
               <Area.Play>
@@ -119,19 +121,15 @@ export const AudioPlayer = (props: AudioPlayerProps) => (
               <Area.Time>
                 <AudioPlayerTimeDisplay />
               </Area.Time>
-              <Area.Card
-                overrides={{
-                  paddingInlineEnd: { xs: "space040", md: "space000" },
-                }}
-              >
+              <Area.Card paddingInlineEnd={{ xs: "space040", md: "space000" }}>
                 <AudioCard
                   img="https://lh3.googleusercontent.com/MREZs3XEFT10UiamzjOG9eRgOFvyzvNiLQmiNzrRXHeQlnaTbRRZedz6PQuowK0yJWxjGy_6lGEiT7o=w544-h544-l90-rj"
                   title="Will Of The People"
                   sub="Muse - Single"
                 />
               </Area.Card>
-              {/* @ts-ignore */}
-              <Area.Volume overrides={{ paddingInlineEnd: "space040" }}>
+              <Area.Volume paddingInlineEnd="space040">
+                {/* @ts-ignore */}
                 <Hidden xs sm>
                   <AudioPlayerVolumeControl />
                 </Hidden>

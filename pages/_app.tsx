@@ -12,6 +12,7 @@ import { AudioPlayer } from "../components/audio-player";
 import { Header } from "../components/header";
 import React from "react";
 const Page = styled.div`
+  padding-block-start: 48px;
   padding-block-end: 100px;
   ${getColorCssFromTheme("background", "interfaceBackground")}
 `;

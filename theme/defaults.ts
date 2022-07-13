@@ -35,4 +35,33 @@ export default {
       minHeight: "38px",
     },
   },
+  // tabs: {
+  //   small: {
+  //     stylePreset: "tab",
+  //     typographyPreset: "utilityButton010",
+  //     spaceInset: "spaceInsetSquish020",
+  //     minHeight: "sizing060",
+  //     iconSize: "iconSize010",
+  //     spaceInline: "space020",
+  //     transitionPreset: "backgroundColorChange",
+  //   },
+  //   medium: {
+  //     stylePreset: "tab",
+  //     typographyPreset: "utilityButton020",
+  //     spaceInset: "spaceInsetSquish030",
+  //     minHeight: "sizing080",
+  //     iconSize: "iconSize020",
+  //     spaceInline: "space020",
+  //     transitionPreset: "backgroundColorChange",
+  //   },
+  //   large: {
+  //     stylePreset: "tab",
+  //     typographyPreset: "utilityButton030",
+  //     spaceInset: "spaceInsetSquish030",
+  //     minHeight: "sizing090",
+  //     iconSize: "iconSize030",
+  //     spaceInline: "space020",
+  //     transitionPreset: "backgroundColorChange",
+  //   },
+  // }
 };

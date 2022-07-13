@@ -37,4 +37,9 @@ export default {
       backgroundColor: "{{colors.interface030}}",
     },
   },
+  tab: {
+    base: {
+      whiteSpace: "nowrap",
+    },
+  },
 } as Record<string, StylePreset>;

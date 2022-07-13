@@ -71,7 +71,8 @@ export const Header = ({ themeName, themeOnChange }: HeaderProps) => {
                 thumbIcon: DynamicThumbIcon,
               }}
             />
-            <IconButton>
+
+            <IconButton href="/settings">
               <IconFilledAccountCircle overrides={{ size: "iconSize030" }} />
             </IconButton>
           </GridLayout>
