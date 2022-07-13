@@ -16,6 +16,8 @@ import {
   IconFilledLightMode,
   Hidden,
 } from "newskit";
+import Link from "next/link";
+
 import { HeaderProps } from "./types";
 
 const StyledBlock = styled(Block)`
@@ -71,10 +73,11 @@ export const Header = ({ themeName, themeOnChange }: HeaderProps) => {
                 thumbIcon: DynamicThumbIcon,
               }}
             />
-
-            <IconButton href="/settings">
-              <IconFilledAccountCircle overrides={{ size: "iconSize030" }} />
-            </IconButton>
+            <Link href="/settings">
+              <IconButton href="/settings">
+                <IconFilledAccountCircle overrides={{ size: "iconSize030" }} />
+              </IconButton>
+            </Link>
           </GridLayout>
         </GridLayoutItem>
       </GridLayout>

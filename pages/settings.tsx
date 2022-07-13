@@ -41,34 +41,49 @@ const switchOverrides = {
 };
 const assistiveTextOverrides = { typographyPreset: "utilityBody020" };
 
+const SwitchFormInput = ({ label, assistiveText, name }: any) => (
+  <FormInput name={name}>
+    <div>
+      <Switch label={label} overrides={switchOverrides} />
+      <FormInputAssistiveText overrides={assistiveTextOverrides}>
+        {assistiveText}
+      </FormInputAssistiveText>
+    </div>
+  </FormInput>
+);
+
+const SelectFormInput = ({ label, assistiveText, name, children }) => (
+  <FormInput name={name}>
+    <div>
+      <GridLayout columns="1fr 1fr" alignItems="center">
+        <FormInputLabel overrides={labelOverrides}>{label}</FormInputLabel>
+        <FormInputSelect>{children}</FormInputSelect>
+      </GridLayout>
+      <FormInputAssistiveText overrides={assistiveTextOverrides}>
+        {assistiveText}
+      </FormInputAssistiveText>
+    </div>
+  </FormInput>
+);
+
 const tabs = [
   {
     label: "General",
     content: (
       <FormGrid>
-        <FormInput>
-          <div>
-            <Switch label="Restricted Mode" overrides={switchOverrides} />
-            <FormInputAssistiveText overrides={assistiveTextOverrides}>
-              Restricted Mode can help to hide videos and songs with potentially
+        <SwitchFormInput
+          label="Restricted Mode"
+          name="restrictedMode"
+          assistiveText=" Restricted Mode can help to hide videos and songs with potentially
               mature content. No filter is 100% accurate, but it should help you
-              to avoid most of this type of content.
-            </FormInputAssistiveText>
-          </div>
-        </FormInput>
-
-        <FormInput>
-          <div>
-            <Switch
-              label="Show your liked music from Newskit Music"
-              overrides={switchOverrides}
-            />
-            <FormInputAssistiveText overrides={assistiveTextOverrides}>
-              Music videos that you've marked with a thumbs up in other Newskit
-              Music apps will be shown in the 'Your likes' playlist
-            </FormInputAssistiveText>
-          </div>
-        </FormInput>
+              to avoid most of this type of content."
+        />
+        <SwitchFormInput
+          label="Show your liked music from Newskit Music"
+          name="showLikedMusic"
+          assistiveText=" Music videos that you've marked with a thumbs up in other Newskit
+              Music apps will be shown in the 'Your likes' playlist"
+        />
       </FormGrid>
     ),
   },
@@ -76,23 +91,17 @@ const tabs = [
     label: "Playback",
     content: (
       <FormGrid>
-        <FormInput>
-          <div>
-            <GridLayout columns="1fr 1fr" alignItems="center">
-              <FormInputLabel overrides={labelOverrides}>
-                Audi quality
-              </FormInputLabel>
-              <FormInputSelect>
-                <SelectOption value="low">Low</SelectOption>
-                <SelectOption value="normal">Normal</SelectOption>
-                <SelectOption value="high">High</SelectOption>
-              </FormInputSelect>
-            </GridLayout>
-            <FormInputAssistiveText overrides={assistiveTextOverrides}>
-              Adjust your audio quality
-            </FormInputAssistiveText>
-          </div>
-        </FormInput>
+        <SelectFormInput
+          label="Audi quality"
+          name="audioQuality"
+          assistiveText=" Adjust your audio quality"
+        >
+          <SelectOption value="low">Low</SelectOption>
+          <SelectOption value="normal" selected>
+            Normal
+          </SelectOption>
+          <SelectOption value="high">High</SelectOption>
+        </SelectFormInput>
       </FormGrid>
     ),
   },
@@ -104,40 +113,28 @@ const tabs = [
     label: "Language and Location",
     content: (
       <FormGrid>
-        <FormInput name="location">
-          <div>
-            <GridLayout columns="1fr 1fr" alignItems="center">
-              <FormInputLabel overrides={labelOverrides}>
-                Location
-              </FormInputLabel>
-              <FormInputSelect>
-                <SelectOption value="low">Bulgaria</SelectOption>
-                <SelectOption value="normal">UK</SelectOption>
-                <SelectOption value="high">The Netherlands</SelectOption>
-              </FormInputSelect>
-            </GridLayout>
-            <FormInputAssistiveText overrides={assistiveTextOverrides}>
-              Your location
-            </FormInputAssistiveText>
-          </div>
-        </FormInput>
-        <FormInput name="language">
-          <div>
-            <GridLayout columns="1fr 1fr" alignItems="center">
-              <FormInputLabel overrides={labelOverrides}>
-                Language
-              </FormInputLabel>
-              <FormInputSelect>
-                <SelectOption value="low">Bulgarian</SelectOption>
-                <SelectOption value="normal">English</SelectOption>
-                <SelectOption value="high">Dutch</SelectOption>
-              </FormInputSelect>
-            </GridLayout>
-            <FormInputAssistiveText overrides={assistiveTextOverrides}>
-              Your language
-            </FormInputAssistiveText>
-          </div>
-        </FormInput>
+        <SelectFormInput
+          label="Location"
+          name="location"
+          assistiveText="Set your location"
+        >
+          <SelectOption value="BG">Bulgaria</SelectOption>
+          <SelectOption value="UK" selected>
+            UK
+          </SelectOption>
+          <SelectOption value="NL">The Netherlands</SelectOption>
+        </SelectFormInput>
+        <SelectFormInput
+          label="Language"
+          name="Language"
+          assistiveText="Set your language"
+        >
+          <SelectOption value="BG">Bulgarian</SelectOption>
+          <SelectOption value="UK" selected>
+            English
+          </SelectOption>
+          <SelectOption value="NL">Dutch</SelectOption>
+        </SelectFormInput>
       </FormGrid>
     ),
   },
