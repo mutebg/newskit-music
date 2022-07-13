@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
+import React, { ReactElement } from "react";
 import type { NextPage } from "next";
 import {
   GridLayout,
@@ -15,6 +15,7 @@ import {
   FormInputSelect,
   SelectOption,
   FormInputLabel,
+  SelectOptionProps,
 } from "newskit";
 
 const FormGrid = ({ children }: { children: React.ReactNode }) => {
@@ -41,7 +42,15 @@ const switchOverrides = {
 };
 const assistiveTextOverrides = { typographyPreset: "utilityBody020" };
 
-const SwitchFormInput = ({ label, assistiveText, name }: any) => (
+const SwitchFormInput = ({
+  label,
+  assistiveText,
+  name,
+}: {
+  label: string;
+  assistiveText: string;
+  name: string;
+}) => (
   <FormInput name={name}>
     <div>
       <Switch label={label} overrides={switchOverrides} />
@@ -52,7 +61,17 @@ const SwitchFormInput = ({ label, assistiveText, name }: any) => (
   </FormInput>
 );
 
-const SelectFormInput = ({ label, assistiveText, name, children }) => (
+const SelectFormInput = ({
+  label,
+  assistiveText,
+  name,
+  children,
+}: {
+  label: string;
+  assistiveText: string;
+  name: string;
+  children: React.ReactElement<SelectOptionProps>[];
+}) => (
   <FormInput name={name}>
     <div>
       <GridLayout columns="1fr 1fr" alignItems="center">
