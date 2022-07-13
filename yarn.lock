@@ -1631,10 +1631,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-newskit@5.6.0:
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/newskit/-/newskit-5.6.0.tgz#30041b93ddd51dbbfc6a47ebc2c310dd58c66ea2"
-  integrity sha512-YpQ/FsBXGbga/oqJ+FRurz0nskCR2iakH8bWwsg8UqMZHtb0d41iWRicaXB8ud76cscF+X8NxN99lKbLckdGeQ==
+newskit@0.0.0-009a9fa40:
+  version "0.0.0-009a9fa40"
+  resolved "https://registry.yarnpkg.com/newskit/-/newskit-0.0.0-009a9fa40.tgz#48b2ae8980c7ff981e30722d20358987e2eb1c25"
+  integrity sha512-sUH2NSf7RuV/pRywNPyvGmEASpGv6w8RbckzTZVtr2wNm2LQizvj0syFwkUPo2HgqFhI+dfvEKxL6V+WH50SyQ==
   dependencies:
     "@capsizecss/core" "^3.0.0"
     "@emotion-icons/emotion-icon" "4.0.0"

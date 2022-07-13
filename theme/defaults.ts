@@ -28,6 +28,9 @@ export default {
       spaceInset: "spaceInsetSquish030",
       typographyPreset: "utilitySubheading040",
     },
+    vertical: {
+      spaceInline: "space000",
+    },
   },
   button: {
     medium: {

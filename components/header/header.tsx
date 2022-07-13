@@ -15,6 +15,8 @@ import {
   IconFilledDarkMode,
   IconFilledLightMode,
   Hidden,
+  Popover,
+  MenuDivider,
 } from "newskit";
 import Link from "next/link";
 
@@ -28,6 +30,15 @@ const StyledBlock = styled(Block)`
   z-index: 2;
   ${getColorCssFromTheme("background", "interface020")}
 `;
+
+const userMenu = (
+  <Menu vertical overrides={{ spaceInline: "space000" }}>
+    <MenuItem href="/profile">Profile</MenuItem>
+    <MenuItem href="/settings">Settings</MenuItem>
+    <MenuDivider />
+    <MenuItem href="/">Logout</MenuItem>
+  </Menu>
+);
 
 const DynamicThumbIcon = ({ checked }: { checked: boolean }) =>
   !checked ? <IconFilledDarkMode /> : <IconFilledLightMode />;
@@ -73,11 +84,26 @@ export const Header = ({ themeName, themeOnChange }: HeaderProps) => {
                 thumbIcon: DynamicThumbIcon,
               }}
             />
-            <Link href="/settings">
-              <IconButton href="/settings">
-                <IconFilledAccountCircle overrides={{ size: "iconSize030" }} />
-              </IconButton>
-            </Link>
+            <div>
+              <Popover
+                content={userMenu}
+                closePosition="none"
+                header={undefined}
+                enableDismiss
+                overrides={{
+                  content: {
+                    paddingInline: "space000",
+                    paddingBlock: "space000",
+                  },
+                }}
+              >
+                <IconButton>
+                  <IconFilledAccountCircle
+                    overrides={{ size: "iconSize030" }}
+                  />
+                </IconButton>
+              </Popover>
+            </div>
           </GridLayout>
         </GridLayoutItem>
       </GridLayout>
