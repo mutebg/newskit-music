@@ -14,6 +14,7 @@ import React from "react";
 const Page = styled.div`
   padding-block-start: 48px;
   padding-block-end: 100px;
+  min-height: 100vh;
   ${getColorCssFromTheme("background", "interfaceBackground")}
 `;
 

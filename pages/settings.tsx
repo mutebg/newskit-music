@@ -173,6 +173,7 @@ const Settings: NextPage = () => {
       <TextBlock
         typographyPreset="utilityHeading050"
         paddingInlineStart="space040"
+        stylePreset="inkBase"
       >
         Settings
       </TextBlock>

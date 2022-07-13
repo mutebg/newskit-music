@@ -75,7 +75,11 @@ export const Header = ({ themeName, themeOnChange }: HeaderProps) => {
         </Menu>
 
         <GridLayoutItem justifySelf="end">
-          <GridLayout columns="auto auto" columnGap="space080">
+          <GridLayout
+            columns="auto auto"
+            columnGap="space080"
+            alignItems="center"
+          >
             <Switch
               label="Toggle theme"
               onChange={themeOnChange}
