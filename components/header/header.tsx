@@ -39,14 +39,16 @@ const DynamicThumbIcon = ({ checked }: { checked: boolean }) =>
   !checked ? <IconFilledDarkMode /> : <IconFilledLightMode />;
 
 const MainMenu = () => (
-  <Menu>
-    <MenuItem href="/">Home</MenuItem>
-    <MenuItem href="/">Explore</MenuItem>
-    <MenuItem href="/">Library</MenuItem>
-    <MenuItem href="/">
-      <IconFilledSearch /> Search
-    </MenuItem>
-  </Menu>
+  <GridLayoutItem justifySelf="center">
+    <Menu>
+      <MenuItem href="/">Home</MenuItem>
+      <MenuItem href="/">Explore</MenuItem>
+      <MenuItem href="/">Library</MenuItem>
+      <MenuItem href="/">
+        <IconFilledSearch /> Search
+      </MenuItem>
+    </Menu>
+  </GridLayoutItem>
 );
 
 const BrandLogo = () => (
@@ -150,7 +152,7 @@ const UserSettings = ({ themeOnChange, themeName }: HeaderProps) => {
 
   return (
     <>
-      <GridLayoutItem justifySelf="end">
+      <GridLayoutItem justifySelf="end" paddingInlineEnd="space040">
         <GridLayout
           columns="auto auto"
           columnGap="space080"
@@ -196,11 +198,7 @@ const UserSettings = ({ themeOnChange, themeName }: HeaderProps) => {
 export const Header = ({ themeName, themeOnChange }: HeaderProps) => {
   return (
     <>
-      <StyledBlock
-        stylePreset="header"
-        paddingInlineStart="space030"
-        paddingInlineEnd="space050"
-      >
+      <StyledBlock stylePreset="header" paddingInline="space030">
         <GridLayout
           alignItems="center"
           columns="1fr 1fr 1fr"
