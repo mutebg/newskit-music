@@ -4,11 +4,11 @@ import { SectionProps } from "./types";
 export const Section = ({ title, children }: SectionProps) => (
   <GridLayout
     rowGap="space040"
-    style={{ margin: "0 auto" }}
     overrides={{
       paddingInline: { xs: "space050", md: "space080" },
       maxWidth: "1480px",
       width: "100%",
+      marginInline: "auto",
     }}
   >
     <TextBlock typographyPreset="editorialHeadline070" stylePreset="inkBase">

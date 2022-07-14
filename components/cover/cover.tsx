@@ -10,10 +10,6 @@ import {
 } from "newskit";
 import { CoverProps } from "./types";
 
-const StyledGridLayout = styled(GridLayout)`
-  margin: 0 auto;
-`;
-
 const StyledCover = styled.div<{ url: string }>`
   background-size: cover;
   ${(props) =>
@@ -25,13 +21,14 @@ const StyledCover = styled.div<{ url: string }>`
 
 export const Cover = ({ name, bio, cover }: CoverProps) => (
   <StyledCover url={cover}>
-    <StyledGridLayout
+    <GridLayout
       alignItems="center"
       rows="repeat(3, auto)"
       columns="1"
       rowGap="space040"
       alignContent="end"
       overrides={{
+        marginInline: "auto",
         height: { xs: "40vh", md: "60vh" },
         paddingInline: { xs: "space050", md: "space080" },
         maxWidth: "1480px",
@@ -58,6 +55,6 @@ export const Cover = ({ name, bio, cover }: CoverProps) => (
           Subscribe 2.3M
         </Button>
       </GridLayout>
-    </StyledGridLayout>
+    </GridLayout>
   </StyledCover>
 );

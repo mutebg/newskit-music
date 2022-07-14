@@ -7,7 +7,7 @@ export const PageTemplate = ({ title, children }: PageTemplateProps) => (
     rowGap="space050"
     overrides={{
       marginInline: "auto",
-      maxWidth: "1200px",
+      maxWidth: "980px",
       marginBlockStart: "space070",
       paddingInline: "space060",
     }}
