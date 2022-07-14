@@ -137,17 +137,19 @@ const UserSettings = ({ themeOnChange, themeName }: HeaderProps) => {
   }, [setUpdateModalIsShown]);
 
   const userMenu = (
-    <Menu vertical overrides={{ spaceInline: "space000" }}>
-      <MenuItem href="/profile">Profile</MenuItem>
-      <MenuItem href="/settings">Settings</MenuItem>
-      <MenuDivider />
-      <MenuItem href="/about">About</MenuItem>
-      <MenuItem href="/" onClick={handleUpdateModalOpen}>
-        Update
-      </MenuItem>
-      <MenuDivider />
-      <MenuItem href="/">Logout</MenuItem>
-    </Menu>
+    <GridLayout overrides={{ minWidth: "150px" }}>
+      <Menu vertical overrides={{ spaceInline: "space000" }}>
+        <MenuItem href="/profile">Profile</MenuItem>
+        <MenuItem href="/settings">Settings</MenuItem>
+        <MenuDivider />
+        <MenuItem href="/about">About</MenuItem>
+        <MenuItem href="/" onClick={handleUpdateModalOpen}>
+          Update
+        </MenuItem>
+        <MenuDivider />
+        <MenuItem href="/">Logout</MenuItem>
+      </Menu>
+    </GridLayout>
   );
 
   return (
@@ -173,10 +175,11 @@ const UserSettings = ({ themeOnChange, themeName }: HeaderProps) => {
               closePosition="none"
               header={undefined}
               enableDismiss
+              placement="bottom-end"
               overrides={{
                 content: {
                   paddingInline: "space000",
-                  paddingBlock: "space000",
+                  paddingBlock: "space010",
                 },
               }}
             >
