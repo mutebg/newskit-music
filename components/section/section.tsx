@@ -72,10 +72,18 @@ export const Section = ({ title, children }: SectionProps) => {
         </TextBlock>
         {showScrollArrows && (
           <>
-            <IconButton onClick={scrollPrev} disabled={!canScrollStart}>
+            <IconButton
+              onClick={scrollPrev}
+              disabled={!canScrollStart}
+              overrides={{ stylePreset: "iconButtonOutlinedPrimary" }}
+            >
               <IconFilledChevronLeft />
             </IconButton>
-            <IconButton onClick={scrollNext} disabled={!canScrollEnd}>
+            <IconButton
+              onClick={scrollNext}
+              disabled={!canScrollEnd}
+              overrides={{ stylePreset: "iconButtonOutlinedPrimary" }}
+            >
               <IconFilledChevronRight />
             </IconButton>
           </>
