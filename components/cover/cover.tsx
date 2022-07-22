@@ -7,8 +7,36 @@ import {
   Button,
   styled,
   getOverlayCssFromTheme,
+  IconFilledMoreVert,
+  IconButton,
+  Popover,
+  Menu,
+  MenuItem,
+  IconFilledShare,
+  IconFilledQueueMusic,
+  IconFilledPlaylistAdd,
 } from "newskit";
 import { CoverProps } from "./types";
+
+const menuItemOverrides = {
+  spaceInline: "space030",
+};
+
+const moreMenu = (
+  <GridLayout overrides={{ minWidth: "150px" }}>
+    <Menu vertical overrides={{ spaceInline: "space000" }}>
+      <MenuItem href="/" overrides={menuItemOverrides}>
+        <IconFilledQueueMusic /> Create playlist
+      </MenuItem>
+      <MenuItem href="/" overrides={menuItemOverrides}>
+        <IconFilledPlaylistAdd /> Add playlist
+      </MenuItem>
+      <MenuItem href="/" overrides={menuItemOverrides}>
+        <IconFilledShare /> Share
+      </MenuItem>
+    </Menu>
+  </GridLayout>
+);
 
 const StyledCover = styled.div<{ url: string }>`
   background-size: cover;
@@ -41,7 +69,7 @@ export const Cover = ({ name, bio, cover }: CoverProps) => (
         {bio}
       </TextBlock>
       <GridLayout
-        columns="repeat(3, auto)"
+        columns="repeat(4, auto)"
         justifyContent="start"
         columnGap="space030"
       >
@@ -54,6 +82,28 @@ export const Cover = ({ name, bio, cover }: CoverProps) => (
         <Button overrides={{ stylePreset: "buttonOutlinedNegative" }}>
           Subscribe 2.3M
         </Button>
+        <Popover
+          content={moreMenu}
+          closePosition="none"
+          header={undefined}
+          enableDismiss
+          overrides={{
+            content: {
+              paddingInline: "space000",
+              paddingBlock: "space010",
+            },
+          }}
+        >
+          <IconButton
+            overrides={{
+              stylePreset: "iconButtonMinimalPrimary",
+              height: "38px",
+              width: "38px",
+            }}
+          >
+            <IconFilledMoreVert overrides={{ size: "sizing050" }} />
+          </IconButton>
+        </Popover>
       </GridLayout>
     </GridLayout>
   </StyledCover>
