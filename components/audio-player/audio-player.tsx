@@ -11,9 +11,9 @@ import {
   TextBlock,
   Block,
   styled,
-  Hidden,
 } from "newskit";
 import { AudioPlayerCardProps, AudioPlayerProps } from "./types";
+import { HideMobile } from "../hide";
 
 const AUDIO_SRC =
   "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
@@ -38,26 +38,24 @@ const AudioCard = ({ title, img, sub }: AudioPlayerCardProps) => (
             <img src={img} width="40" height="40" />
           </Area.Img>
           <Area.Title>
-            {/* @ts-ignore */}
-            <Hidden xs sm>
+            <HideMobile>
               <TextBlock
                 stylePreset="inkBase"
                 typographyPreset="utilityHeading010"
               >
                 {title}
               </TextBlock>
-            </Hidden>
+            </HideMobile>
           </Area.Title>
           <Area.Sub>
-            {/* @ts-ignore */}
-            <Hidden xs sm>
+            <HideMobile>
               <TextBlock
                 stylePreset="inkBase"
                 typographyPreset="utilitySubheading010"
               >
                 {sub}
               </TextBlock>
-            </Hidden>
+            </HideMobile>
           </Area.Sub>
         </>
       )
@@ -129,10 +127,9 @@ export const AudioPlayer = (props: AudioPlayerProps) => (
                 />
               </Area.Card>
               <Area.Volume paddingInlineEnd="space040">
-                {/* @ts-ignore */}
-                <Hidden xs sm>
+                <HideMobile>
                   <AudioPlayerVolumeControl />
-                </Hidden>
+                </HideMobile>
               </Area.Volume>
             </>
           )

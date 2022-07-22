@@ -15,14 +15,16 @@ import {
   IconFilledDarkMode,
   IconFilledLightMode,
   IconFilledCheck,
-  Hidden,
   Popover,
   MenuDivider,
   Modal,
   ModalProps,
   IndeterminateProgressIndicator,
+  IconFilledMenu,
+  Drawer,
 } from "newskit";
 import Link from "next/link";
+import { HideMobile, HideDesktop } from "../hide";
 
 import { HeaderProps } from "./types";
 
@@ -37,6 +39,15 @@ const StyledBlock = styled(Block)`
 
 const DynamicThumbIcon = ({ checked }: { checked: boolean }) =>
   !checked ? <IconFilledDarkMode /> : <IconFilledLightMode />;
+
+const DrawerMenu = () => (
+  <Menu vertical>
+    <MenuItem href="/">Home</MenuItem>
+    <MenuItem href="/">Explore</MenuItem>
+    <MenuItem href="/">Library</MenuItem>
+    <MenuItem href="/">Search</MenuItem>
+  </Menu>
+);
 
 const MainMenu = () => (
   <GridLayoutItem justifySelf="center">
@@ -56,9 +67,11 @@ const BrandLogo = () => (
     <svg style={{ height: "48px", width: "auto" }} viewBox="0 0 1345 760">
       <use xlinkHref="/svgs/colors.svg#colors"></use>
     </svg>
-    <TextBlock as="span" stylePreset="inkBase">
-      NewsKit Demo
-    </TextBlock>
+    <HideMobile>
+      <TextBlock as="span" stylePreset="inkBase">
+        NewsKit Demo
+      </TextBlock>
+    </HideMobile>
   </GridLayout>
 );
 
@@ -154,21 +167,23 @@ const UserSettings = ({ themeOnChange, themeName }: HeaderProps) => {
 
   return (
     <>
-      <GridLayoutItem justifySelf="end" paddingInlineEnd="space040">
+      <GridLayoutItem justifySelf="end" paddingInlineEnd={{ md: "space040" }}>
         <GridLayout
           columns="auto auto"
-          columnGap="space080"
+          columnGap={{ xs: "space000", md: "space080" }}
           alignItems="center"
         >
-          <Switch
-            label="Toggle theme"
-            onChange={themeOnChange}
-            checked={themeName === "light"}
-            overrides={{
-              // @ts-ignore
-              thumbIcon: DynamicThumbIcon,
-            }}
-          />
+          <HideMobile>
+            <Switch
+              label="Toggle theme"
+              onChange={themeOnChange}
+              checked={themeName === "light"}
+              overrides={{
+                // @ts-ignore
+                thumbIcon: DynamicThumbIcon,
+              }}
+            />
+          </HideMobile>
           <div>
             <Popover
               content={userMenu}
@@ -198,21 +213,69 @@ const UserSettings = ({ themeOnChange, themeName }: HeaderProps) => {
   );
 };
 
+const areas = {
+  xs: "menu brand user",
+  md: "brand menu user",
+};
+
+const columns = {
+  xs: "auto 1fr auto",
+  md: "1fr 1fr 1fr",
+};
+
 export const Header = ({ themeName, themeOnChange }: HeaderProps) => {
+  const [drawerIsOpen, setDrawerIsOpen] = React.useState(false);
+
   return (
     <>
       <StyledBlock stylePreset="header" paddingInline="space030">
         <GridLayout
           alignItems="center"
-          columns="1fr 1fr 1fr"
+          columns={columns}
           justifyContent="space-between"
+          areas={areas}
         >
-          <BrandLogo />
-
-          <MainMenu />
-
-          <UserSettings themeName={themeName} themeOnChange={themeOnChange} />
+          {
+            // @ts-ignore
+            (Areas) => (
+              <>
+                <Areas.Brand justifySelf={{ xs: "center", md: "start" }}>
+                  <BrandLogo />
+                </Areas.Brand>
+                <Areas.Menu>
+                  <HideDesktop>
+                    <IconButton onClick={() => setDrawerIsOpen(true)}>
+                      <IconFilledMenu />
+                    </IconButton>
+                  </HideDesktop>
+                  <HideMobile>
+                    <MainMenu />
+                  </HideMobile>
+                </Areas.Menu>
+                <Areas.User justifySelf="end">
+                  <UserSettings
+                    themeName={themeName}
+                    themeOnChange={themeOnChange}
+                  />
+                </Areas.User>
+              </>
+            )
+          }
         </GridLayout>
+        <Drawer
+          open={drawerIsOpen}
+          onDismiss={() => setDrawerIsOpen(false)}
+          overrides={{
+            content: {
+              spaceInset: "space010",
+            },
+            closeButton: {
+              spaceInset: "space010",
+            },
+          }}
+        >
+          <DrawerMenu />
+        </Drawer>
       </StyledBlock>
     </>
   );

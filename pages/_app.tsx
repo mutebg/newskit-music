@@ -4,6 +4,7 @@ import {
   css,
   styled,
   getColorCssFromTheme,
+  MediaQueryProvider,
 } from "newskit";
 import type { AppProps } from "next/app";
 import { lightTheme, darkTheme } from "../theme";
@@ -26,6 +27,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+
       <Global
         styles={css`
           *,
@@ -40,13 +43,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         `}
       />
       <ThemeProvider theme={currentTheme === "light" ? lightTheme : darkTheme}>
-        <CSSVars>
-          <Page>
-            <Header themeName={currentTheme} themeOnChange={themeOnChange} />
-            <Component {...pageProps} />
-            <AudioPlayer />
-          </Page>
-        </CSSVars>
+        <MediaQueryProvider>
+          <CSSVars>
+            <Page>
+              <Header themeName={currentTheme} themeOnChange={themeOnChange} />
+              <Component {...pageProps} />
+              <AudioPlayer />
+            </Page>
+          </CSSVars>
+        </MediaQueryProvider>
       </ThemeProvider>
     </>
   );

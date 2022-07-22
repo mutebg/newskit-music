@@ -7,14 +7,19 @@ export const PageTemplate = ({ title, children }: PageTemplateProps) => (
     rowGap="space050"
     overrides={{
       marginInline: "auto",
+      width: "100%",
       maxWidth: "980px",
       marginBlockStart: "space070",
       paddingInline: "space060",
     }}
   >
-    <TextBlock typographyPreset="utilityHeading050" stylePreset="inkBase">
+    <TextBlock
+      typographyPreset="utilityHeading050"
+      stylePreset="inkBase"
+      as="h1"
+    >
       {title}
     </TextBlock>
-    <div>{children}</div>
+    {children}
   </GridLayout>
 );

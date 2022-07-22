@@ -1,90 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { ReactElement } from "react";
 import type { NextPage } from "next";
+import { Tabs, Tab, SelectOption, useBreakpointKey } from "newskit";
 import {
-  GridLayout,
-  TextBlock,
-  Tabs,
-  Tab,
-  Switch,
-  Form,
-  FormInput,
-  FormInputAssistiveText,
-  Divider,
-  Select,
-  FormInputSelect,
-  SelectOption,
-  FormInputLabel,
-  SelectOptionProps,
-} from "newskit";
+  FormGrid,
+  SwitchFormInput,
+  SelectFormInput,
+} from "../components/form/form";
+
 import { PageTemplate } from "../components/page-template";
-
-const FormGrid = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <GridLayout
-      rowGap="space050"
-      overrides={{ paddingInline: "space060", paddingBlock: "space020" }}
-    >
-      {React.Children.map(children, (child, index) => (
-        <>
-          {child}
-          <Divider />
-        </>
-      ))}
-    </GridLayout>
-  );
-};
-
-const labelOverrides = { typographyPreset: "utilityButton030" };
-
-const switchOverrides = {
-  label: { typographyPreset: "utilityButton030" },
-  marginBlockEnd: "space030",
-};
-const assistiveTextOverrides = { typographyPreset: "utilityBody020" };
-
-const SwitchFormInput = ({
-  label,
-  assistiveText,
-  name,
-}: {
-  label: string;
-  assistiveText: string;
-  name: string;
-}) => (
-  <FormInput name={name}>
-    <div>
-      <Switch label={label} overrides={switchOverrides} />
-      <FormInputAssistiveText overrides={assistiveTextOverrides}>
-        {assistiveText}
-      </FormInputAssistiveText>
-    </div>
-  </FormInput>
-);
-
-const SelectFormInput = ({
-  label,
-  assistiveText,
-  name,
-  children,
-}: {
-  label: string;
-  assistiveText: string;
-  name: string;
-  children: React.ReactElement<SelectOptionProps>[];
-}) => (
-  <FormInput name={name}>
-    <div>
-      <GridLayout columns="1fr 1fr" alignItems="center">
-        <FormInputLabel overrides={labelOverrides}>{label}</FormInputLabel>
-        <FormInputSelect>{children}</FormInputSelect>
-      </GridLayout>
-      <FormInputAssistiveText overrides={assistiveTextOverrides}>
-        {assistiveText}
-      </FormInputAssistiveText>
-    </div>
-  </FormInput>
-);
 
 const tabs = [
   {
@@ -161,14 +85,23 @@ const tabs = [
 ];
 
 const Settings: NextPage = () => {
+  const verticalTabs = !["sm", "xs"].includes(useBreakpointKey());
+  console.log({ verticalTabs });
+
   return (
     <PageTemplate title="Settings">
       <Tabs
-        distribution="start"
+        // distribution="start"
         overrides={{
           selectionIndicator: { track: {}, indicator: {} },
+          scroll: {
+            props: {
+              scrollBar: true,
+              controls: "static",
+            },
+          },
         }}
-        vertical
+        vertical={verticalTabs}
         initialSelectedIndex={0}
         indicatorPosition="end"
         size="large"
