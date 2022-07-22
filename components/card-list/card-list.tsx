@@ -2,7 +2,6 @@ import {
   GridLayout,
   styled,
   TextBlock,
-  Block,
   IconButton,
   Image,
   IconFilledPlayArrow,
