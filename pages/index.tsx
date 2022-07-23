@@ -1,5 +1,5 @@
 import type { NextPage, NextPageContext } from "next";
-import { GridLayout } from "newskit";
+import { GridLayout, Slider, TextBlock } from "newskit";
 import { Cover } from "../components/cover";
 import { Songs } from "../components/songs";
 import { CardList } from "../components/card-list";
@@ -8,8 +8,6 @@ import axios from "axios";
 import DeezerClient from "../services/deezer";
 
 export async function getServerSideProps(context: NextPageContext) {
-  console.log("query", context.query);
-
   // @ts-ignore
   const client = new DeezerClient(axios);
   const req = await client.artist(
@@ -19,7 +17,7 @@ export async function getServerSideProps(context: NextPageContext) {
   const [albumsRaw, info, top] = await Promise.all([
     req.albums(),
     req.infos(),
-    await req.top(),
+    req.top(),
   ]);
 
   // @ts-ignore
@@ -57,6 +55,8 @@ export async function getServerSideProps(context: NextPageContext) {
       info: {
         name: info.name,
         cover: info.picture_xl,
+        fans: info.nb_fan,
+        bio: "no bio",
       },
     },
   };
@@ -66,6 +66,8 @@ type Props = {
   info: {
     name: string;
     cover: string;
+    fans: number;
+    bio: string;
   };
   topSongs: {
     id: number;
@@ -92,24 +94,46 @@ const Home: NextPage<Props> = ({
   albums = [],
   singles = [],
   topSongs = [],
-  info = { name: "", cover: "" },
+  info = { name: "", cover: "", bio: "", fans: 0 },
   ...props
 }) => {
-  console.log(props, singles);
   return (
     <GridLayout rowGap="space100">
-      <Cover {...info} bio="no available" />
+      <Cover {...info} />
       <Section title="Songs">
-        {topSongs.length && <Songs songs={topSongs} />}
+        {topSongs.length ? (
+          <Songs songs={topSongs} />
+        ) : (
+          <TextBlock
+            stylePreset="inkBase"
+            typographyPreset="editorialHeadline020"
+          >
+            No songs
+          </TextBlock>
+        )}
       </Section>
       <Section title="Albums">
-        {albums.length && (
+        {albums.length ? (
           <CardList list={albums.map((k) => ({ ...k, sub: k.year }))} />
+        ) : (
+          <TextBlock
+            stylePreset="inkBase"
+            typographyPreset="editorialHeadline020"
+          >
+            No albums
+          </TextBlock>
         )}
       </Section>
       <Section title="Singles">
-        {singles.length && (
+        {singles.length ? (
           <CardList list={singles.map((k) => ({ ...k, sub: k.year }))} />
+        ) : (
+          <TextBlock
+            stylePreset="inkBase"
+            typographyPreset="editorialHeadline020"
+          >
+            No singles
+          </TextBlock>
         )}
       </Section>
     </GridLayout>

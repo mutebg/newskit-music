@@ -47,7 +47,7 @@ const StyledCover = styled.div<{ url: string }>`
     )(props)};
 `;
 
-export const Cover = ({ name, bio, cover }: CoverProps) => (
+export const Cover = ({ name, bio, cover, fans }: CoverProps) => (
   <StyledCover url={cover}>
     <GridLayout
       alignItems="center"
@@ -80,7 +80,7 @@ export const Cover = ({ name, bio, cover }: CoverProps) => (
           <IconFilledRadio /> Radio
         </Button>
         <Button overrides={{ stylePreset: "buttonOutlinedNegative" }}>
-          Subscribe 2.3M
+          Fans {fans}
         </Button>
         <Popover
           content={moreMenu}

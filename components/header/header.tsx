@@ -42,10 +42,18 @@ const DynamicThumbIcon = ({ checked }: { checked: boolean }) =>
 
 const DrawerMenu = () => (
   <Menu vertical>
-    <MenuItem href="/">Home</MenuItem>
-    <MenuItem href="/">Explore</MenuItem>
-    <MenuItem href="/">Library</MenuItem>
-    <MenuItem href="/">Search</MenuItem>
+    <Link href="/">
+      <MenuItem href="/">Home</MenuItem>
+    </Link>
+    <Link href="/">
+      <MenuItem href="/">Explore</MenuItem>
+    </Link>
+    <Link href="/">
+      <MenuItem href="/">Library</MenuItem>
+    </Link>
+    <Link href="/">
+      <MenuItem href="/">Search</MenuItem>
+    </Link>
   </Menu>
 );
 
@@ -63,9 +71,15 @@ const MainMenu = () => {
   return (
     <GridLayoutItem justifySelf="center">
       <Menu>
-        <MenuItem href="/">Home</MenuItem>
-        <MenuItem href="/">Explore</MenuItem>
-        <MenuItem href="/">Library</MenuItem>
+        <Link href="/">
+          <MenuItem href="/">Home</MenuItem>
+        </Link>
+        <Link href="/">
+          <MenuItem href="/">Explore</MenuItem>
+        </Link>
+        <Link href="/">
+          <MenuItem href="/">Library</MenuItem>
+        </Link>
         <MenuItem href="/" onClick={handleOpenMenu}>
           <IconFilledSearch /> Search
         </MenuItem>
@@ -81,7 +95,11 @@ const BrandLogo = () => (
       <use xlinkHref="/svgs/colors.svg#colors"></use>
     </svg>
     <HideMobile>
-      <TextBlock as="span" stylePreset="inkBase">
+      <TextBlock
+        as="span"
+        stylePreset="inkBase"
+        typographyPreset="utilitySubheading020"
+      >
         NewsKit Demo
       </TextBlock>
     </HideMobile>
@@ -103,7 +121,6 @@ const UpdateModal = ({
   React.useEffect(() => {
     if (open) {
       setTimeout(() => {
-        console.log("timeout");
         setIsChecking(false);
       }, 2500);
     }
@@ -165,15 +182,23 @@ const UserSettings = ({ themeOnChange, themeName }: HeaderProps) => {
   const userMenu = (
     <GridLayout overrides={{ minWidth: "150px" }}>
       <Menu vertical overrides={{ spaceInline: "space000" }}>
-        <MenuItem href="/profile">Profile</MenuItem>
-        <MenuItem href="/settings">Settings</MenuItem>
+        <Link href="/profile">
+          <MenuItem href="/profile">Profile</MenuItem>
+        </Link>
+        <Link href="/settings">
+          <MenuItem href="/settings">Settings</MenuItem>
+        </Link>
         <MenuDivider />
-        <MenuItem href="/about">About</MenuItem>
+        <Link href="/about">
+          <MenuItem href="/about">About</MenuItem>
+        </Link>
         <MenuItem href="/" onClick={handleUpdateModalOpen}>
           Update
         </MenuItem>
         <MenuDivider />
-        <MenuItem href="/">Logout</MenuItem>
+        <Link href="/">
+          <MenuItem href="/">Logout</MenuItem>
+        </Link>
       </Menu>
     </GridLayout>
   );

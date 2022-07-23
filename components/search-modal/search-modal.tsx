@@ -33,7 +33,6 @@ export const SearchModal = ({
 
   const handleSearchChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(e.target.value);
       setSearchValue(e.target.value);
     },
     [setSearchValue]

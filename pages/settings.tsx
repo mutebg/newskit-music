@@ -86,7 +86,6 @@ const tabs = [
 
 const Settings: NextPage = () => {
   const verticalTabs = !["sm", "xs"].includes(useBreakpointKey());
-  console.log({ verticalTabs });
 
   return (
     <PageTemplate title="Settings">
