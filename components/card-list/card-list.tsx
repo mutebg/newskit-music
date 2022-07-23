@@ -92,7 +92,7 @@ const CardListItem = ({ cover, title, sub }: CardListItemProps) => (
 export const CardList = ({ list }: CardListProps) => (
   <StyledGridLayout columnGap="space050" justifyContent="start">
     {list.map((row) => (
-      <CardListItem key={row.title} {...row} />
+      <CardListItem key={row.id} {...row} />
     ))}
   </StyledGridLayout>
 );

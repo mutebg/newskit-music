@@ -112,7 +112,7 @@ const SongListItem = ({ title, artist, album, cover }: SongListItemProps) => {
 export const Songs = ({ songs }: SongsProps) => (
   <div>
     {songs.map((props) => (
-      <SongListItem key={props.title} {...props} />
+      <SongListItem key={props.id} {...props} />
     ))}
   </div>
 );

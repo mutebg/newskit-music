@@ -25,7 +25,7 @@ import {
 } from "newskit";
 import Link from "next/link";
 import { HideMobile, HideDesktop } from "../hide";
-
+import { SearchModal } from "../search-modal";
 import { HeaderProps } from "./types";
 
 const StyledBlock = styled(Block)`
@@ -49,18 +49,31 @@ const DrawerMenu = () => (
   </Menu>
 );
 
-const MainMenu = () => (
-  <GridLayoutItem justifySelf="center">
-    <Menu>
-      <MenuItem href="/">Home</MenuItem>
-      <MenuItem href="/">Explore</MenuItem>
-      <MenuItem href="/">Library</MenuItem>
-      <MenuItem href="/">
-        <IconFilledSearch /> Search
-      </MenuItem>
-    </Menu>
-  </GridLayoutItem>
-);
+const MainMenu = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const handleOpenMenu = React.useCallback(
+    (e: React.SyntheticEvent) => {
+      e.preventDefault();
+      setIsOpen(true);
+    },
+    [setIsOpen]
+  );
+
+  return (
+    <GridLayoutItem justifySelf="center">
+      <Menu>
+        <MenuItem href="/">Home</MenuItem>
+        <MenuItem href="/">Explore</MenuItem>
+        <MenuItem href="/">Library</MenuItem>
+        <MenuItem href="/" onClick={handleOpenMenu}>
+          <IconFilledSearch /> Search
+        </MenuItem>
+      </Menu>
+      <SearchModal open={isOpen} onDismiss={() => setIsOpen(false)} />
+    </GridLayoutItem>
+  );
+};
 
 const BrandLogo = () => (
   <GridLayout columns="auto 1fr" alignItems="center">
