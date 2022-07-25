@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
     "axios": "^0.27.2",
-    "newskit": "0.0.0-6a1a19ded",
+    "newskit": "0.0.0-e83728b0d",
     "next": "12.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",

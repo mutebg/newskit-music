@@ -1,10 +1,9 @@
 import {
-  ThemeProvider,
   Global,
   css,
   styled,
   getColorCssFromTheme,
-  MediaQueryProvider,
+  NewsKitProvider,
 } from "newskit";
 import type { AppProps } from "next/app";
 import { lightTheme, darkTheme } from "../theme";
@@ -42,17 +41,18 @@ function MyApp({ Component, pageProps }: AppProps) {
           }
         `}
       />
-      <ThemeProvider theme={currentTheme === "light" ? lightTheme : darkTheme}>
-        <MediaQueryProvider>
-          <CSSVars>
-            <Page>
-              <Header themeName={currentTheme} themeOnChange={themeOnChange} />
-              <Component {...pageProps} />
-              <AudioPlayer />
-            </Page>
-          </CSSVars>
-        </MediaQueryProvider>
-      </ThemeProvider>
+      <NewsKitProvider
+        layer={{ zIndex: 100 }}
+        theme={currentTheme === "light" ? lightTheme : darkTheme}
+      >
+        <CSSVars>
+          <Page>
+            <Header themeName={currentTheme} themeOnChange={themeOnChange} />
+            <Component {...pageProps} />
+            <AudioPlayer />
+          </Page>
+        </CSSVars>
+      </NewsKitProvider>
     </>
   );
 }
