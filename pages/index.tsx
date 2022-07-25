@@ -1,5 +1,5 @@
 import type { NextPage, NextPageContext } from "next";
-import { GridLayout, Slider, TextBlock } from "newskit";
+import { GridLayout, TextBlock, InlineMessage } from "newskit";
 import { Cover } from "../components/cover";
 import { Songs } from "../components/songs";
 import { CardList } from "../components/card-list";
@@ -100,42 +100,23 @@ const Home: NextPage<Props> = ({
   return (
     <GridLayout rowGap="space100">
       <Cover {...info} />
-      <Section title="Songs">
-        {topSongs.length ? (
+      {topSongs.length > 0 && (
+        <Section title="Songs">
           <Songs songs={topSongs} />
-        ) : (
-          <TextBlock
-            stylePreset="inkBase"
-            typographyPreset="editorialHeadline020"
-          >
-            No songs
-          </TextBlock>
-        )}
-      </Section>
-      <Section title="Albums">
-        {albums.length ? (
+        </Section>
+      )}
+
+      {albums.length > 0 && (
+        <Section title="Albums">
           <CardList list={albums.map((k) => ({ ...k, sub: k.year }))} />
-        ) : (
-          <TextBlock
-            stylePreset="inkBase"
-            typographyPreset="editorialHeadline020"
-          >
-            No albums
-          </TextBlock>
-        )}
-      </Section>
-      <Section title="Singles">
-        {singles.length ? (
+        </Section>
+      )}
+
+      {singles.length > 0 && (
+        <Section title="Singles">
           <CardList list={singles.map((k) => ({ ...k, sub: k.year }))} />
-        ) : (
-          <TextBlock
-            stylePreset="inkBase"
-            typographyPreset="editorialHeadline020"
-          >
-            No singles
-          </TextBlock>
-        )}
-      </Section>
+        </Section>
+      )}
     </GridLayout>
   );
 };

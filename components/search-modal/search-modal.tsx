@@ -9,6 +9,7 @@ import {
   GridLayout,
   IconFilledSearch,
 } from "newskit";
+import Link from "next/link";
 import React from "react";
 
 import axios from "axios";
@@ -84,9 +85,9 @@ export const SearchModal = ({
       </form>
       <Menu vertical overrides={{ spaceInline: "space000" }}>
         {searchResults.map(({ id, name }) => (
-          <MenuItem key={id} href={`/?id=${id}`}>
-            {name}
-          </MenuItem>
+          <Link key={id} href={`/?id=${id}`}>
+            <MenuItem href={`/?id=${id}`}>{name}</MenuItem>
+          </Link>
         ))}
       </Menu>
     </Modal>

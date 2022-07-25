@@ -17,7 +17,7 @@ export default {
     stylePreset: "inkBase",
   },
   menu: {
-    spaceInline: "space050",
+    spaceInline: { xs: "space000", lg: "space050" },
   },
   menuItem: {
     horizontal: {
@@ -25,8 +25,14 @@ export default {
       stylePreset: "menuItemHorizontal",
       transitionPreset: "backgroundColorChange",
       spaceInline: "space030",
-      spaceInset: "spaceInsetSquish030",
-      typographyPreset: "utilitySubheading040",
+      spaceInset: {
+        xs: "spaceInsetSquish010",
+        lg: "spaceInsetSquish030",
+      },
+      typographyPreset: {
+        xs: "utilitySubheading020",
+        lg: "utilitySubheading040",
+      },
     },
     vertical: {
       spaceInline: "space000",

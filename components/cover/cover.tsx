@@ -40,6 +40,7 @@ const moreMenu = (
 
 const StyledCover = styled.div<{ url: string }>`
   background-size: cover;
+  background-position: center;
   ${(props) =>
     getOverlayCssFromTheme(
       (value) => ({ backgroundImage: ` ${value}, url(${props.url})` }),

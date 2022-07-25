@@ -22,6 +22,7 @@ import {
   IndeterminateProgressIndicator,
   IconFilledMenu,
   Drawer,
+  Hidden,
 } from "newskit";
 import Link from "next/link";
 import { HideMobile, HideDesktop } from "../hide";
@@ -213,7 +214,10 @@ const UserSettings = ({ themeOnChange, themeName }: HeaderProps) => {
         >
           <HideMobile>
             <Switch
-              label="Toggle theme"
+              label={
+                // @ts-ignore
+                <Hidden md>Toggle theme</Hidden>
+              }
               onChange={themeOnChange}
               checked={themeName === "light"}
               overrides={{

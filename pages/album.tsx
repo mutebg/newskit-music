@@ -1,8 +1,7 @@
 import type { NextPage, NextPageContext } from "next";
-import { GridLayout, Slider, TextBlock } from "newskit";
+import { GridLayout, InlineMessage, Slider, TextBlock } from "newskit";
 import { Cover } from "../components/cover";
 import { Songs } from "../components/songs";
-import { CardList } from "../components/card-list";
 import { Section } from "../components/section";
 import axios from "axios";
 import DeezerClient from "../services/deezer";
@@ -61,18 +60,11 @@ const Album: NextPage<Props> = ({
   return (
     <GridLayout rowGap="space100">
       <Cover {...info} />
-      <Section title="Songs">
-        {songs.length ? (
+      {songs.length > 0 && (
+        <Section title="Songs">
           <Songs songs={songs} />
-        ) : (
-          <TextBlock
-            stylePreset="inkBase"
-            typographyPreset="editorialHeadline020"
-          >
-            No songs
-          </TextBlock>
-        )}
-      </Section>
+        </Section>
+      )}
     </GridLayout>
   );
 };
